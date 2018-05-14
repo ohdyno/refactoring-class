@@ -85,24 +85,24 @@ public class MainWindow extends JPanel
       }
       else if (e.getSource() == btnShowPieOrBarChart)
       {
-        IndvDsp cw = new IndvDsp();
-        cw.iniDS(getChartType(), "rpfll", true);
+        IndividualDisplay cw = new IndividualDisplay();
+        cw.initializeDisplayArea(getChartType(), "rpfll", true);
         display(cw);
       }
       else
       {
-        IndvDsp cw = new IndvDsp();
-        cw.iniDS(getChartType(), getDisplayType(), true);
+        IndividualDisplay cw = new IndividualDisplay();
+        cw.initializeDisplayArea(getChartType(), getDisplayType(), true);
         display(cw);
       }
     }
     private void openBarChart()
     {
-      IndvDsp cw = new IndvDsp();
-      cw.iniDS(406, "rpfll", true);
+      IndividualDisplay cw = new IndividualDisplay();
+      cw.initializeDisplayArea(406, "rpfll", true);
       display(cw);
     }
-    private void display(IndvDsp cw)
+    private void display(IndividualDisplay cw)
     {
       JFrame frame = new JFrame();
       frame.getContentPane().add(cw);
