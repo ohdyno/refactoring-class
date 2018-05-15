@@ -85,31 +85,31 @@ public class MainWindow extends JPanel
       }
       else if (e.getSource() == btnShowPieOrBarChart)
       {
-        IndvDsp cw = new IndvDsp();
-        cw.iniDS(getChartType(), "rpfll", true);
+        DisplayCharts cw = new DisplayCharts();
+        cw.initializeChart(getChartType(), "rpfll", true);
         display(cw);
       }
       else
       {
-        IndvDsp cw = new IndvDsp();
-        cw.iniDS(getChartType(), getDisplayType(), true);
+        DisplayCharts cw = new DisplayCharts();
+        cw.initializeChart(getChartType(), getDisplayType(), true);
         display(cw);
       }
     }
     private void openBarChart()
     {
-      IndvDsp cw = new IndvDsp();
-      cw.iniDS(406, "rpfll", true);
+      DisplayCharts cw = new DisplayCharts();
+      cw.initializeChart(406, "rpfll", true);
       display(cw);
     }
-    private void display(IndvDsp cw)
+    private void display(DisplayCharts cw)
     {
       JFrame frame = new JFrame();
       frame.getContentPane().add(cw);
       frame.setLocation(150, 150);
       frame.setBackground(new Color(255, 239, 213));
       frame.pack();
-      frame.setTitle(cw.getTitle());
+      frame.setTitle(cw.getChartTitle());
       frame.setVisible(true);
     }
     private String getDisplayType()
