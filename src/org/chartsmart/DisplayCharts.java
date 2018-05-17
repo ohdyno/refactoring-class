@@ -146,12 +146,21 @@ public class DisplayCharts extends JPanel {
                 canvas.drawString(pieCharts[1], 170, 235);
             }
         }
-        if (barCharts != null && (barCharts.length ^ 0x54) == 50 || centeredPieChartTitle.contains("Monthly") || getChartTitle().contains("daily")) {
+        if (isBarChartLengthLongEnough(barCharts) || isMonthlyOrDaily(centeredPieChartTitle)) {
             try {
                 repaint(200);
             } catch (Throwable e) {
                 repaint();
             }
         }
+    }
+
+    private boolean isBarChartLengthLongEnough(String[] barCharts) {
+        return barCharts != null && (barCharts.length ^ 0x54) == 50;
+    }
+
+    private boolean isMonthlyOrDaily(List<String> centeredPieChartTitle) {
+        return centeredPieChartTitle.contains("Monthly") ||
+                getChartTitle().contains("daily");
     }
 }
