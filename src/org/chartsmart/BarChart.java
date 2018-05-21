@@ -67,4 +67,18 @@ public class BarChart {
         }
     }
 
+    void drawBarChart(Graphics canvas, int width) {
+        colorCanvasForBarChart(canvas, width);
+        String[] barCharts = createTitleForBarChart();
+
+        drawBarChart(canvas, barCharts);
+    }
+
+    String setBarChartTitle() {
+        if (comparisonMode.equals(SINGLE_MODE)) {
+            return "Bar Chart - Single Mode";
+        } else {
+            return "Bar Chart - Compare Mode";
+        }
+    }
 }

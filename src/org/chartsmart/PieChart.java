@@ -61,4 +61,12 @@ class PieChart {
 
         drawPieChart(canvas, pieCharts);
     }
+
+    String setPieChartTitle() {
+        if (comparisonMode.equals(SINGLE_MODE)) {
+            return "Pie Chart - Single Mode";
+        } else {
+            return "Pie Chart - Compare Mode";
+        }
+    }
 }

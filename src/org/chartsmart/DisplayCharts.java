@@ -7,7 +7,7 @@ public class DisplayCharts extends JPanel {
     private static final String SINGLE_MODE = "rpfll";
     private static final int BAR_CHART_TYPE = 406;
     private String comparisonMode;
-    private String chartTitle;
+    String chartTitle;
     private int chartType;
 
     /**
@@ -16,17 +16,11 @@ public class DisplayCharts extends JPanel {
     private void setChartTitle() {
         this.setPreferredSize(new Dimension(600, 600));
         if (chartType == BAR_CHART_TYPE) {
-            if (comparisonMode.equals(SINGLE_MODE)) {
-                chartTitle = "Bar Chart - Single Mode";
-            } else {
-                chartTitle = "Bar Chart - Compare Mode";
-            }
+            BarChart barChart = new BarChart(comparisonMode);
+            chartTitle = barChart.setBarChartTitle();
         } else {
-            if (comparisonMode.equals(SINGLE_MODE)) {
-                chartTitle = "Pie Chart - Single Mode";
-            } else {
-                chartTitle = "Pie Chart - Compare Mode";
-            }
+            PieChart pieChart = new PieChart(comparisonMode);
+            chartTitle = pieChart.setPieChartTitle();
         }
     }
 
@@ -50,11 +44,7 @@ public class DisplayCharts extends JPanel {
     private void drawChart(Graphics canvas) {
         if (chartType == BAR_CHART_TYPE) {
             BarChart barChart = new BarChart(comparisonMode);
-            barChart.colorCanvasForBarChart(canvas, getWidth());
-            String[] barCharts = barChart.createTitleForBarChart();
-
-            barChart.drawBarChart(canvas, barCharts);
-
+            barChart.drawBarChart(canvas, getWidth());
             return;
         }
         PieChart pieChart = new PieChart(comparisonMode);
