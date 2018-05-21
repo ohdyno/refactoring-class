@@ -11,14 +11,12 @@ public class DisplayCharts extends JPanel {
         return chart.title();
     }
 
-    public void initializeChart(int chartType, String mode, boolean setTitle) {
-        if (setTitle) {
-            this.setPreferredSize(new Dimension(600, 600));
-            if (chartType == BAR_CHART_TYPE) {
-                chart = new BarChart(mode);
-            } else {
-                chart = new PieChart(mode);
-            }
+    public void initializeChart(int chartType, String mode) {
+        this.setPreferredSize(new Dimension(600, 600));
+        if (chartType == BAR_CHART_TYPE) {
+            chart = new BarChart(mode);
+        } else {
+            chart = new PieChart(mode);
         }
     }
 
