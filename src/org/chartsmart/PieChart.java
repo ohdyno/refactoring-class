@@ -1,9 +1,8 @@
 package org.chartsmart;
 
-import javax.swing.*;
 import java.awt.*;
 
-class PieChart {
+class PieChart implements Chart {
     private static final String SINGLE_MODE = "rpfll";
     private final String comparisonMode;
 
@@ -11,12 +10,12 @@ class PieChart {
         this.comparisonMode = comparisonMode;
     }
 
-    private void colorCanvasForPieChart(Graphics canvas, JComponent panel) {
+    private void colorCanvasForPieChart(Graphics canvas, int height) {
         if (comparisonMode.equals(SINGLE_MODE)) {
             Color blueBackGroundColor;
             blueBackGroundColor = Color.BLUE;
             canvas.setColor(blueBackGroundColor);
-            canvas.fillOval(100, 100, 450, panel.getHeight() - 150);
+            canvas.fillOval(100, 100, 450, height - 150);
         } else {
             canvas.setColor(Color.BLUE);
             double canvasSize = 405;
@@ -37,7 +36,7 @@ class PieChart {
         return pieCharts;
     }
 
-    private void drawPieChart(Graphics canvas, String[] pieCharts) {
+    private void draw(Graphics canvas, String[] pieCharts) {
         Font font;
         if (comparisonMode.equals(SINGLE_MODE)) {
             font = new Font("Bookman Old Style", Font.BOLD, 55);
@@ -54,15 +53,15 @@ class PieChart {
         }
     }
 
-    void drawPieChart(Graphics canvas, DisplayCharts displayCharts) {
-        colorCanvasForPieChart(canvas, displayCharts);
+    public void draw(Graphics canvas, int width, int height) {
+        colorCanvasForPieChart(canvas, height);
 
         String[] pieCharts = createPieChartTitle();
 
-        drawPieChart(canvas, pieCharts);
+        draw(canvas, pieCharts);
     }
 
-    String setPieChartTitle() {
+    public String title() {
         if (comparisonMode.equals(SINGLE_MODE)) {
             return "Pie Chart - Single Mode";
         } else {

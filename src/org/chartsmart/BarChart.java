@@ -2,7 +2,7 @@ package org.chartsmart;
 
 import java.awt.*;
 
-public class BarChart {
+public class BarChart implements Chart {
 
     private final String comparisonMode;
     private static final String SHARED_MODE = "shareddisplay";
@@ -12,7 +12,7 @@ public class BarChart {
         this.comparisonMode = comparisonMode;
     }
 
-    void drawBarChart(Graphics canvas, String[] barCharts) {
+    void draw(Graphics canvas, String[] barCharts) {
         Font font;
         if (comparisonMode.equals(SHARED_MODE)) {
             font = new Font("Arial Black", Font.BOLD, 25);
@@ -67,14 +67,16 @@ public class BarChart {
         }
     }
 
-    void drawBarChart(Graphics canvas, int width) {
+    @Override
+    public void draw(Graphics canvas, int width, int height) {
         colorCanvasForBarChart(canvas, width);
         String[] barCharts = createTitleForBarChart();
 
-        drawBarChart(canvas, barCharts);
+        draw(canvas, barCharts);
     }
 
-    String setBarChartTitle() {
+    @Override
+    public String title() {
         if (comparisonMode.equals(SINGLE_MODE)) {
             return "Bar Chart - Single Mode";
         } else {
