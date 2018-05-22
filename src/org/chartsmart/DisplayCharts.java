@@ -21,10 +21,7 @@ public class DisplayCharts extends JPanel {
     }
 
     public void paint(Graphics g) {
-        drawChart(g);
+        chart.draw(g, getWidth(), getHeight());
     }
 
-    private void drawChart(Graphics canvas) {
-        chart.draw(canvas, getWidth(), getHeight());
-    }
 }
