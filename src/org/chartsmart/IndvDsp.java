@@ -47,8 +47,7 @@ public class IndvDsp extends JPanel {
     private void DrawChart(Graphics g) {
         if (ct == 406) {
             if (jjD.equals("rpfll")) {
-                Color bgc = Color.RED;
-                g.setColor(bgc);
+                g.setColor(Color.RED);
                 g.fillRect(100, 90, getWidth() - 200, 420);
             } else {
                 g.setColor(Color.BLACK);
@@ -56,8 +55,7 @@ public class IndvDsp extends JPanel {
             }
         } else {
             if (jjD.equals("rpfll")) {
-                Color bgcb = Color.BLUE;
-                g.setColor(bgcb);
+                g.setColor(Color.BLUE);
                 g.fillOval(100, 100, 450, getHeight() - 150);
             } else {
                 g.setColor(Color.BLUE);
@@ -89,11 +87,9 @@ public class IndvDsp extends JPanel {
                 data3point14[0] = "Pie" + " Chart";
             }
         }
-        Font font;
         if (ct == 406) {
             if (jjD.equals("shareddisplay")) {
                 if (data != null) {
-                    font = new Font("Arial Black", Font.BOLD, 25);
                     g.setColor(Color.CYAN);
                     int bottomY = 300;
                     g.fillRect(100, bottomY - 100, 40, 100);
@@ -102,7 +98,7 @@ public class IndvDsp extends JPanel {
                     g.fillRect(220, bottomY - 125, 40, 125);
                     g.fillRect(260, bottomY - 170, 40, 170);
                     g.setColor(Color.RED);
-                    g.setFont(font);
+                    g.setFont(new Font("Arial Black", Font.BOLD, 25));
                     g.drawString(data[0], 130, 250);
                     g.drawString(data[1], 130, 270);
                 }
@@ -114,20 +110,17 @@ public class IndvDsp extends JPanel {
                 g.fillRect(262, bottomY - 300, 75, 300);
                 g.fillRect(337, bottomY - 250, 75, 250);
                 g.fillRect(412, bottomY - 340, 75, 340);
-                font = new Font("Arial Black", Font.BOLD, 55);
                 g.setColor(Color.BLACK);
-                g.setFont(font);
+                g.setFont(new Font("Arial Black", Font.BOLD, 55));
                 g.drawString(data[0], 130, 400);
             }
         } else {
             if (jjD.equals("rpfll")) {
-                font = new Font("Bookman Old Style", Font.BOLD, 55);
                 g.setColor(Color.WHITE);
-                g.setFont(font);
+                g.setFont(new Font("Bookman Old Style", Font.BOLD, 55));
                 g.drawString(specialData.get(0), 200, 340);
             } else {
-                font = new Font("Bookman Old Style", Font.BOLD, 30);
-                g.setFont(font);
+                g.setFont(new Font("Bookman Old Style", Font.BOLD, 30));
                 g.setColor(Color.WHITE);
                 g.drawString(data3point14[0], 145, 205);
                 g.drawString(data3point14[1], 170, 235);
