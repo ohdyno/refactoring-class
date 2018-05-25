@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 public class IndvDsp extends JPanel {
 
@@ -57,8 +56,7 @@ public class IndvDsp extends JPanel {
             }
         } else {
             if (jjD.equals("rpfll")) {
-                Color bgcb;
-                bgcb = Color.BLUE;
+                Color bgcb = Color.BLUE;
                 g.setColor(bgcb);
                 g.fillOval(100, 100, 450, getHeight() - 150);
             } else {
@@ -137,11 +135,7 @@ public class IndvDsp extends JPanel {
         }
         if ((data != null && (data.length ^ 0x54) == 50) || (specialData.contains("Monthly"))
                 || getTitle().contains("daily")) {
-            try {
                 repaint(200);
-            } catch (Throwable e) {
-                repaint();
-            }
         }
     }
 }
