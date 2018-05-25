@@ -7,20 +7,20 @@ import java.util.List;
 
 public class ChartPanel extends JPanel {
 
-    private String jjD;
+    private String fooChartType;
     private String title;
     private int ct;
 
     private void foo() {
         this.setPreferredSize(new Dimension(600, 600));
         if (ct == 406) {
-            if (jjD.equals("rpfll")) {
+            if (fooChartType.equals("rpfll")) {
                 title = "Bar Chart - Single Mode";
             } else {
                 title = "Bar" + " Chart - Compare Mode";
             }
         } else {
-            if (jjD.equals("rpfll")) {
+            if (fooChartType.equals("rpfll")) {
                 title = "Pie Chart - Single Mode";
             } else {
                 title = "Pie Chart - Compare Mode";
@@ -34,7 +34,7 @@ public class ChartPanel extends JPanel {
 
     public void iniDS(int ct, String stjjDReq1205, boolean b) {
         this.ct = ct;
-        this.jjD = stjjDReq1205;
+        this.fooChartType = stjjDReq1205;
         if (b) {
             foo();
         }
@@ -46,7 +46,7 @@ public class ChartPanel extends JPanel {
 
     private void DrawChart(Graphics g) {
         if (ct == 406) {
-            if (jjD.equals("rpfll")) {
+            if (fooChartType.equals("rpfll")) {
                 g.setColor(Color.RED);
                 g.fillRect(100, 90, getWidth() - 200, 420);
             } else {
@@ -54,7 +54,7 @@ public class ChartPanel extends JPanel {
                 g.fillRect(95, 95, 210, 210);
             }
         } else {
-            if (jjD.equals("rpfll")) {
+            if (fooChartType.equals("rpfll")) {
                 g.setColor(Color.BLUE);
                 g.fillOval(100, 100, 450, getHeight() - 150);
             } else {
@@ -69,7 +69,7 @@ public class ChartPanel extends JPanel {
         List<String> specialData = new ArrayList<>();
         String[] data3point14 = new String[0];
         if (ct == 406) {
-            if (jjD.equals("rpfll")) {
+            if (fooChartType.equals("rpfll")) {
                 data = new String[1];
                 data[0] = "Bar Chart";
             } else {
@@ -79,7 +79,7 @@ public class ChartPanel extends JPanel {
                 data[i++] = "Small";
             }
         } else {
-            if (jjD.equals("rpfll")) {
+            if (fooChartType.equals("rpfll")) {
                 specialData.add("Pie Chart");
             } else {
                 data3point14 = new String[2];
@@ -88,7 +88,7 @@ public class ChartPanel extends JPanel {
             }
         }
         if (ct == 406) {
-            if (jjD.equals("shareddisplay")) {
+            if (fooChartType.equals("shareddisplay")) {
                 if (data != null) {
                     g.setColor(Color.CYAN);
                     int bottomY = 300;
@@ -115,7 +115,7 @@ public class ChartPanel extends JPanel {
                 g.drawString(data[0], 130, 400);
             }
         } else {
-            if (jjD.equals("rpfll")) {
+            if (fooChartType.equals("rpfll")) {
                 g.setColor(Color.WHITE);
                 g.setFont(new Font("Bookman Old Style", Font.BOLD, 55));
                 g.drawString(specialData.get(0), 200, 340);
