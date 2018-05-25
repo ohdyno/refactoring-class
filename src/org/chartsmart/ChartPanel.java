@@ -9,6 +9,8 @@ public class ChartPanel extends JPanel {
 
     public static final int BAR_CHART = 406;
     public static final String SINGLE_MODE = "rpfll";
+    public static final int FOO = 40;
+    public static final int WIDTH_OF_75 = 75;
     private String chartMode;
     private String title;
     private int chartType;
@@ -34,9 +36,9 @@ public class ChartPanel extends JPanel {
         return title;
     }
 
-    public void iniDS(int ct, String stjjDReq1205, boolean b) {
-        this.chartType = ct;
-        this.chartMode = stjjDReq1205;
+    public void iniDS(int chartType, String chartMode, boolean b) {
+        this.chartType = chartType;
+        this.chartMode = chartMode;
         if (b) {
             InitalizeDrawArea();
         }
@@ -47,7 +49,7 @@ public class ChartPanel extends JPanel {
     }
 
     private void DrawChart(Graphics g) {
-        if (chartType == 406) {
+        if (chartType == BAR_CHART) {
             if (chartMode.equals(SINGLE_MODE)) {
                 g.setColor(Color.RED);
                 g.fillRect(100, 90, getWidth() - 200, 420);
@@ -70,7 +72,7 @@ public class ChartPanel extends JPanel {
         String[] data = null;
         List<String> specialData = new ArrayList<>();
         String[] data3point14 = new String[0];
-        if (chartType == 406) {
+        if (chartType == BAR_CHART) {
             if (chartMode.equals(SINGLE_MODE)) {
                 data = new String[1];
                 data[0] = "Bar Chart";
@@ -89,16 +91,16 @@ public class ChartPanel extends JPanel {
                 data3point14[0] = "Pie" + " Chart";
             }
         }
-        if (chartType == 406) {
+        if (chartType == BAR_CHART) {
             if (chartMode.equals("shareddisplay")) {
                 if (data != null) {
                     g.setColor(Color.CYAN);
                     int bottomY = 300;
-                    g.fillRect(100, bottomY - 100, 40, 100);
-                    g.fillRect(140, bottomY - 200, 40, 200);
-                    g.fillRect(180, bottomY - 150, 40, 150);
-                    g.fillRect(220, bottomY - 125, 40, 125);
-                    g.fillRect(260, bottomY - 170, 40, 170);
+                    g.fillRect(100, bottomY - 100, FOO, 100);
+                    g.fillRect(140, bottomY - 200, FOO, 200);
+                    g.fillRect(180, bottomY - 150, FOO, 150);
+                    g.fillRect(220, bottomY - 125, FOO, 125);
+                    g.fillRect(260, bottomY - 170, FOO, 170);
                     g.setColor(Color.RED);
                     g.setFont(new Font("Arial Black", Font.BOLD, 25));
                     g.drawString(data[0], 130, 250);
@@ -107,11 +109,11 @@ public class ChartPanel extends JPanel {
             } else {
                 int bottomY = 500;
                 g.setColor(Color.CYAN);
-                g.fillRect(112, bottomY - 200, 75, 200);
-                g.fillRect(187, bottomY - 400, 75, 400);
-                g.fillRect(262, bottomY - 300, 75, 300);
-                g.fillRect(337, bottomY - 250, 75, 250);
-                g.fillRect(412, bottomY - 340, 75, 340);
+                g.fillRect(112, bottomY - 200, WIDTH_OF_75, 200);
+                g.fillRect(187, bottomY - 400, WIDTH_OF_75, 400);
+                g.fillRect(262, bottomY - 300, WIDTH_OF_75, 300);
+                g.fillRect(337, bottomY - 250, WIDTH_OF_75, 250);
+                g.fillRect(412, bottomY - 340, WIDTH_OF_75, 340);
                 g.setColor(Color.BLACK);
                 g.setFont(new Font("Arial Black", Font.BOLD, 55));
                 g.drawString(data[0], 130, 400);
