@@ -33,20 +33,12 @@ public class IndvDsp extends JPanel {
         return __APARAM__Z;
     }
 
-    /**
-     * Shows the chart
-     */
     public void iniDS(int ct, String stjjDReq1205, boolean b) {
         this.ct = ct;
         this.jjD = stjjDReq1205;
         if (b) {
             iHATEthisUckingJob();
         }
-    }
-
-    @Override
-    public Set<AWTKeyStroke> getFocusTraversalKeys(int id) {
-        return super.getFocusTraversalKeys(id);
     }
 
     public void paint(Graphics g) {
