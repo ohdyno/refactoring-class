@@ -81,7 +81,7 @@ public class IndvDsp extends JPanel {
             }
         }
         String[] data = null;
-        List<String> specialData = new ArrayList<String>();
+        List<String> specialData = new ArrayList<>();
         String[] data3point14 = new String[0];
         if (ct == 406) {
             if (jjD.equals("rpfll")) {
