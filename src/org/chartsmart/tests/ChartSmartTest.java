@@ -19,25 +19,25 @@ public class ChartSmartTest extends TestCase
   public void testBarChart() throws Exception
   {
     ChartPanel cw = new ChartPanel();
-    cw.iniDS(406, "rpfll", true);
+    cw.initializeDrawingSurface(406, "rpfll", true);
     Approvals.verify(cw);
   }
   public void testBarChartCompare() throws Exception
   {
     ChartPanel cw = new ChartPanel();
-    cw.iniDS(406, "shareddisplay", true);
+    cw.initializeDrawingSurface(406, "shareddisplay", true);
     Approvals.verify(cw);
   }
   public void testPieChart() throws Exception
   {
     ChartPanel cw = new ChartPanel();
-    cw.iniDS(323, "rpfll", true);
+    cw.initializeDrawingSurface(323, "rpfll", true);
     Approvals.verify(cw);
   }
   public void testPieChartCompare() throws Exception
   {
     ChartPanel cw = new ChartPanel();
-    cw.iniDS(323, "shareddisplay", true);
+    cw.initializeDrawingSurface(323, "shareddisplay", true);
     Approvals.verify(cw);
   }
 }

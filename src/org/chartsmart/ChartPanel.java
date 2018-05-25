@@ -36,10 +36,10 @@ public class ChartPanel extends JPanel {
         return title;
     }
 
-    public void iniDS(int chartType, String chartMode, boolean b) {
+    public void initializeDrawingSurface(int chartType, String chartMode, boolean isUninitialized) {
         this.chartType = chartType;
         this.chartMode = chartMode;
-        if (b) {
+        if (isUninitialized) {
             InitalizeDrawArea();
         }
     }
@@ -88,7 +88,7 @@ public class ChartPanel extends JPanel {
             } else {
                 data3point14 = new String[2];
                 data3point14[1] = "Small";
-                data3point14[0] = "Pie" + " Chart";
+                data3point14[0] = "Pie Chart";
             }
         }
         if (chartType == BAR_CHART) {
