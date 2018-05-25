@@ -29,9 +29,6 @@ public class IndvDsp extends JPanel {
         }
     }
 
-    public IndvDsp() {
-    }
-
     public String getTitle() {
         return __APARAM__Z;
     }
