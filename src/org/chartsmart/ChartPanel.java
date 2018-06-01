@@ -132,8 +132,9 @@ public class ChartPanel extends JPanel {
                 g.drawString(pieChartText[1], 170, 235);
             }
         }
-        if ((barChartText != null && (barChartText.length ^ 0x54) == 50) || (specialData.contains("Monthly"))
-                || getTitle().contains("daily")) {
+        boolean chartTextFits = barChartText != null && ((barChartText.length ^ 0x54) == 50);
+        boolean monthlyOrDaily = specialData.contains("Monthly") || getTitle().contains("daily");
+        if (chartTextFits || monthlyOrDaily) {
                 repaint(200);
         }
     }
