@@ -7,16 +7,18 @@ import java.util.List;
 
 public class ChartPanel extends JPanel {
 
-    public static final int BAR_CHART = 406;
-    public static final String SINGLE_MODE = "rpfll";
-    public static final int FOO = 40;
-    public static final int WIDTH_OF_75 = 75;
+    private static final int BAR_CHART = 406;
+    private static final String SINGLE_MODE = "rpfll";
+    private static final int BAR_WIDTH = 40;
+    private static final int WIDTH_OF_75 = 75;
     private String chartMode;
     private String title;
     private int chartType;
 
-    private void InitalizeDrawArea() {
-        this.setPreferredSize(new Dimension(600, 600));
+    private void initalizeDrawArea() {
+        int width = 600;
+        int height = 600;
+        this.setPreferredSize(new Dimension(width, height));
         if (chartType == BAR_CHART) {
             if (chartMode.equals(SINGLE_MODE)) {
                 title = "Bar Chart - Single Mode";
@@ -32,7 +34,7 @@ public class ChartPanel extends JPanel {
         }
     }
 
-    public String getTitle() {
+    String getTitle() {
         return title;
     }
 
@@ -40,15 +42,15 @@ public class ChartPanel extends JPanel {
         this.chartType = chartType;
         this.chartMode = chartMode;
         if (isUninitialized) {
-            InitalizeDrawArea();
+            initalizeDrawArea();
         }
     }
 
     public void paint(Graphics g) {
-        DrawChart(g);
+        drawChart(g);
     }
 
-    private void DrawChart(Graphics g) {
+    private void drawChart(Graphics g) {
         if (chartType == BAR_CHART) {
             if (chartMode.equals(SINGLE_MODE)) {
                 g.setColor(Color.RED);
@@ -58,53 +60,53 @@ public class ChartPanel extends JPanel {
                 g.fillRect(95, 95, 210, 210);
             }
         } else {
+            int x = 100;
+            int y = 100;
+            int width = 450;
             if (chartMode.equals(SINGLE_MODE)) {
                 g.setColor(Color.BLUE);
-                g.fillOval(100, 100, 450, getHeight() - 150);
+                g.fillOval(x, y, width, getHeight() - 150);
             } else {
                 g.setColor(Color.BLUE);
-                double isq = 405;
-                float padding = 90;
-                int sc = (int) (isq - padding * 2);
-                g.fillOval(100, 100, sc, sc);
+                g.fillOval(x, y, 225, 225);
             }
         }
-        String[] data = null;
+        String[] barChartText = null;
         List<String> specialData = new ArrayList<>();
-        String[] data3point14 = new String[0];
+        String[] pieChartText = new String[0];
+        String SMALL = "Small";
         if (chartType == BAR_CHART) {
             if (chartMode.equals(SINGLE_MODE)) {
-                data = new String[1];
-                data[0] = "Bar Chart";
+                barChartText = new String[1];
+                barChartText[0] = "Bar Chart";
             } else {
-                data = new String[2];
-                int i = 0;
-                data[i++] = "Bar Chart";
-                data[i++] = "Small";
+                barChartText = new String[2];
+                barChartText[0] = "Bar Chart";
+                barChartText[1] = SMALL;
             }
         } else {
             if (chartMode.equals(SINGLE_MODE)) {
                 specialData.add("Pie Chart");
             } else {
-                data3point14 = new String[2];
-                data3point14[1] = "Small";
-                data3point14[0] = "Pie Chart";
+                pieChartText = new String[2];
+                pieChartText[0] = "Pie Chart";
+                pieChartText[1] = SMALL;
             }
         }
         if (chartType == BAR_CHART) {
             if (chartMode.equals("shareddisplay")) {
-                if (data != null) {
+                if (barChartText != null) {
                     g.setColor(Color.CYAN);
                     int bottomY = 300;
-                    g.fillRect(100, bottomY - 100, FOO, 100);
-                    g.fillRect(140, bottomY - 200, FOO, 200);
-                    g.fillRect(180, bottomY - 150, FOO, 150);
-                    g.fillRect(220, bottomY - 125, FOO, 125);
-                    g.fillRect(260, bottomY - 170, FOO, 170);
+                    g.fillRect(100, bottomY - 100, BAR_WIDTH, 100);
+                    g.fillRect(140, bottomY - 200, BAR_WIDTH, 200);
+                    g.fillRect(180, bottomY - 150, BAR_WIDTH, 150);
+                    g.fillRect(220, bottomY - 125, BAR_WIDTH, 125);
+                    g.fillRect(260, bottomY - 170, BAR_WIDTH, 170);
                     g.setColor(Color.RED);
                     g.setFont(new Font("Arial Black", Font.BOLD, 25));
-                    g.drawString(data[0], 130, 250);
-                    g.drawString(data[1], 130, 270);
+                    g.drawString(barChartText[0], 130, 250);
+                    g.drawString(barChartText[1], 130, 270);
                 }
             } else {
                 int bottomY = 500;
@@ -116,7 +118,7 @@ public class ChartPanel extends JPanel {
                 g.fillRect(412, bottomY - 340, WIDTH_OF_75, 340);
                 g.setColor(Color.BLACK);
                 g.setFont(new Font("Arial Black", Font.BOLD, 55));
-                g.drawString(data[0], 130, 400);
+                g.drawString(barChartText[0], 130, 400);
             }
         } else {
             if (chartMode.equals(SINGLE_MODE)) {
@@ -126,11 +128,11 @@ public class ChartPanel extends JPanel {
             } else {
                 g.setFont(new Font("Bookman Old Style", Font.BOLD, 30));
                 g.setColor(Color.WHITE);
-                g.drawString(data3point14[0], 145, 205);
-                g.drawString(data3point14[1], 170, 235);
+                g.drawString(pieChartText[0], 145, 205);
+                g.drawString(pieChartText[1], 170, 235);
             }
         }
-        if ((data != null && (data.length ^ 0x54) == 50) || (specialData.contains("Monthly"))
+        if ((barChartText != null && (barChartText.length ^ 0x54) == 50) || (specialData.contains("Monthly"))
                 || getTitle().contains("daily")) {
                 repaint(200);
         }
